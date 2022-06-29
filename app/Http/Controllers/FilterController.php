@@ -10,11 +10,11 @@ use App\Models\Machine;
 
 class FilterController extends Controller
 {
-    public function __invoke() {
+    public function __invoke(Request $request) {
         $products = Product::all();
         $materials = Material::all();
         $machines = Machine::all();
-        return view('admin', [
+        return view($request->path(), [
             'products' => $products,
             'materials' => $materials,
             'machines' => $machines,

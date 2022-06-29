@@ -1,29 +1,3 @@
-<?php
-class query
-{
-    static $i=0;
-
-    function fetch()
-        {   if (self::$i==0) {
-            self::$i++;
-            return [
-                'id' => 1,
-                'value' => 'PT'
-            ];
-        } else {
-            return '';
-        }
-        }
-
-};
-
-function db_query()
-{
-    return new query;
-}
-
-?>
-
 <!DOCTYPE html>
 <html lang="ru">
 <head>
@@ -58,8 +32,7 @@ function db_query()
                     <label class="label">Виды продукции</label>
                     <div class="field-wrapper-full">
                         <?php
-                            $products = db_query("SELECT * FROM `products`; ");
-                            while($product = $products->fetch()) {?>
+                            foreach($products as $product) {?>
                                 <label class="checkbox"><input type="checkbox" id="<?php echo 'products-'. $product['id']?>"><?php echo $product['value']?></label>
                             <?php }; ?>
                     </div>
@@ -69,8 +42,7 @@ function db_query()
                        <label class="label">Виды материалов</label>
                        <div class="field-wrapper-full">
                        <?php
-                            $materials = db_query("SELECT * FROM `materials`; ");
-                            while($material = $materials->fetch()) {?>
+                            foreach($materials as $material) {?>
                                 <label class="checkbox"><input type="checkbox" id="<?php echo 'materials-'.$material['id']?>"><?php echo $material['value']?></label>
                             <?php }; ?>
                        </div>
@@ -80,8 +52,7 @@ function db_query()
                        <label class="label">Оборудование</label>
                        <div class="field-wrapper-full">
                        <?php
-                            $machines = db_query("SELECT * FROM `machines`; ");
-                            while($machine = $machines->fetch()) {?>
+                            foreach($machines as $machine) {?>
                                 <label class="checkbox"><input type="checkbox" id="<?php echo 'machines-'.$machine['id']?>"><?php echo $machine['value']?></label>
                         <?php }; ?>
                        </div>
