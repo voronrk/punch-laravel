@@ -14,7 +14,12 @@ class FilterController extends Controller
         $products = Product::all();
         $materials = Material::all();
         $machines = Machine::all();
-        return view($request->path(), [
+        if ($request->path() == '/') {
+            $view = 'index';
+        } else {
+            $view = $request->path();
+        };
+        return view($view, [
             'products' => $products,
             'materials' => $materials,
             'machines' => $machines,

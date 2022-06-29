@@ -43,7 +43,7 @@
           </div>
         </div>
       </nav>
-    {{-- <section class="section">
+    <section class="section">
         <div class="columns">
             <div class="column is-2 filter">
                 <form class="form" id="filter">
@@ -52,8 +52,7 @@
                         <label class="label">Виды продукции</label>
                         <div class="field-wrapper-small">
                         <?php
-                            $products = db_query("SELECT * FROM `products`; ");
-                            while($product = $products->fetch()) {?>
+                            foreach($products as $product) {?>
                                 <label class="checkbox"><input type="checkbox" id="<?php echo $product['value']?>"><?php echo $product['value']?></label>
                             <?php }; ?>
                         </div>
@@ -64,8 +63,7 @@
                         <label class="label">Виды материалов</label>
                         <div class="field-wrapper-small">
                         <?php
-                            $materials = db_query("SELECT * FROM `materials`; ");
-                            while($material = $materials->fetch()) {?>
+                            foreach($materials as $material) {?>
                                 <label class="checkbox"><input type="checkbox" id="<?php echo $material['value']?>"><?php echo $material['value']?></label>
                             <?php }; ?>
                         </div>
@@ -76,8 +74,7 @@
                         <label class="label">Оборудование</label>
                         <div class="field-wrapper">
                         <?php
-                            $machines = db_query("SELECT * FROM `machines`; ");
-                            while($machine = $machines->fetch()) {?>
+                            foreach($machines as $machine) {?>
                                 <label class="checkbox"><input type="checkbox" id="<?php echo $machine['value']?>"><?php echo $machine['value']?></label>
                         <?php }; ?>
                         </div>
@@ -186,6 +183,6 @@
             </div>
         </div>
         <button class="modal-close is-large" aria-label="close" id="modal-close"></button>
-    </div> --}}
+    </div>
 </body>
 </html>

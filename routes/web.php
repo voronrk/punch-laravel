@@ -14,8 +14,10 @@ use App\Http\Controllers\FilterController;
 |
 */
 
-Route::get('/', function () {
-    return view('index');
-});
+// Route::get('/', function () {
+//     return view('index');
+// });
+
+Route::get('/', FilterController::class);
 
 Route::get('admin', FilterController::class);
