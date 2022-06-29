@@ -145,7 +145,7 @@
 
                    <div class="field" id="pic">
                        <label class="label">Картинка</label>
-                        <input type="text" class="input is-small" id='pic-1'>
+                        <input type="file" class="input is-small" id='pic-1'>
                        <div class="field-add is-size-7 has-text-info">Добавить</div>
                    </div>
 
