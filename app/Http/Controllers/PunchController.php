@@ -4,6 +4,8 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Storage;
+use App\Models\Punch;
+use App\Models\PunchPic;
 
 class PunchController extends Controller
 {
@@ -39,6 +41,22 @@ class PunchController extends Controller
         $file = $request->file('pic-1');
         $upload_folder = 'public/img';
         $path = Storage::putFile($upload_folder, $file);
+
+        $punch = new Punch;
+        $punch->name = $request->input('title');;
+        $punch->ordernum = $request->input('ordernum');
+        $punch->year = $request->input('year');
+        $punch->size_length = $request->input('sizeLength');
+        $punch->size_width = $request->input('sizeWidth');
+        $punch->size_height = $request->input('sizeHeight');
+        $punch->knife_size_length = $request->input('knifeSizeLength');
+        $punch->knife_size_width = $request->input('knifeSizeWidth');
+        $punchId = $punch->save();
+
+        $punchPic = new PunchPic;
+        $punchPic->punch = $punchId;
+        $punchPic->value = $path;
+        $punchPic->save();
 
         return view('test', ['request' => $request, 'pic1' => $path]);
     }

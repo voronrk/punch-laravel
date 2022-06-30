@@ -28,6 +28,10 @@
         {{-- <form class="form" id="addPunch" method="POST" action="/add_punch"> --}}
         <form class="form" enctype="multipart/form-data" id="addPunch" method="POST" action="/add_punch">
             @csrf
+            <div class="field" >
+                       <label class="label">Название штампа</label>
+                       <input type="text" class="input is-small" name="title">
+                   </div>
             <div class="columns">
                 <div class="column is-3">
                 <div class="field" id="products">

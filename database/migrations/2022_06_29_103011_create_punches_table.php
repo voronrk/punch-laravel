@@ -19,11 +19,11 @@ return new class extends Migration
             $table->string('name');
             $table->string('ordernum');
             $table->string('year');
-            $table->float('size_length', 4, 2)->unsigned();
-            $table->float('size_width', 4, 2)->unsigned();
-            $table->float('size_height', 4, 2)->unsigned();
-            $table->float('knife_size_length', 4, 2)->unsigned();
-            $table->float('knife_size_width', 4, 2)->unsigned();
+            $table->float('size_length', 6, 2)->unsigned();
+            $table->float('size_width', 6, 2)->unsigned();
+            $table->float('size_height', 6, 2)->unsigned();
+            $table->float('knife_size_length', 6, 2)->unsigned();
+            $table->float('knife_size_width', 6, 2)->unsigned();
         });
     }
 
