@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use App\Http\Requests\StorePunchRequest;
 use Illuminate\Support\Facades\Storage;
 use App\Models\Punch;
 use App\Models\PunchPic;
@@ -35,19 +36,25 @@ class PunchController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(StorePunchRequest $request)
     {
+
+        $validatedRequest = $request->validated();
+        // echo "<pre>";
+        // echo print_r($validatedRequest,true);
+        // echo "</pre>";
+        // die();
 
         $file = $request->file('pic-1');
         $upload_folder = 'public/img';
         $path = Storage::putFile($upload_folder, $file);
 
         $punch = new Punch;
-        $punch->name = $request->input('title');;
+        $punch->name = $validatedRequest['title'];
         $punch->ordernum = $request->input('ordernum');
         $punch->year = $request->input('year');
-        $punch->size_length = $request->input('sizeLength');
-        $punch->size_width = $request->input('sizeWidth');
+        $punch->size_length = $validatedRequest['sizeLength'];
+        $punch->size_width = $validatedRequest['sizeWidth'];
         $punch->size_height = $request->input('sizeHeight');
         $punch->knife_size_length = $request->input('knifeSizeLength');
         $punch->knife_size_width = $request->input('knifeSizeWidth');
