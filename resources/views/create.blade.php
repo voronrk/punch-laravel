@@ -25,7 +25,9 @@
         </nav>
 
         <section class="section">
-        <form class="form" id="addPunch">
+        {{-- <form class="form" id="addPunch" method="POST" action="/add_punch"> --}}
+        <form class="form" enctype="multipart/form-data" id="addPunch" method="POST" action="/add_punch">
+            @csrf
             <div class="columns">
                 <div class="column is-3">
                 <div class="field" id="products">
@@ -33,7 +35,7 @@
                     <div class="field-wrapper-full">
                         <?php
                             foreach($products as $product) {?>
-                                <label class="checkbox"><input type="checkbox" id="<?php echo 'products-'. $product['id']?>"><?php echo $product['value']?></label>
+                                <label class="checkbox"><input type="checkbox" name="<?php echo 'products-'. $product['id']?>"><?php echo $product['value']?></label>
                             <?php }; ?>
                     </div>
                 </div>
@@ -43,7 +45,7 @@
                        <div class="field-wrapper-full">
                        <?php
                             foreach($materials as $material) {?>
-                                <label class="checkbox"><input type="checkbox" id="<?php echo 'materials-'.$material['id']?>"><?php echo $material['value']?></label>
+                                <label class="checkbox"><input type="checkbox" name="<?php echo 'materials-'.$material['id']?>"><?php echo $material['value']?></label>
                             <?php }; ?>
                        </div>
                    </div>
@@ -53,7 +55,7 @@
                        <div class="field-wrapper-full">
                        <?php
                             foreach($machines as $machine) {?>
-                                <label class="checkbox"><input type="checkbox" id="<?php echo 'machines-'.$machine['id']?>"><?php echo $machine['value']?></label>
+                                <label class="checkbox"><input type="checkbox" name="<?php echo 'machines-'.$machine['id']?>"><?php echo $machine['value']?></label>
                         <?php }; ?>
                        </div>
                    </div>
@@ -68,7 +70,7 @@
                            <div class="field-body">
                              <div class="field">
                                <p class="control">
-                                 <input class="input  is-small" type="number" id="sizeLength">
+                                 <input class="input  is-small" type="number" name="sizeLength">
                                </p>
                              </div>
                            </div>
@@ -80,7 +82,7 @@
                            <div class="field-body">
                              <div class="field">
                                <p class="control">
-                                 <input class="input  is-small" type="number" id="sizeWidth">
+                                 <input class="input  is-small" type="number" name="sizeWidth">
                                </p>
                              </div>
                            </div>
@@ -92,7 +94,7 @@
                            <div class="field-body">
                              <div class="field">
                                <p class="control">
-                                 <input class="input  is-small" type="number" id="sizeHeight">
+                                 <input class="input  is-small" type="number" name="sizeHeight">
                                </p>
                              </div>
                            </div>
@@ -108,7 +110,7 @@
                            <div class="field-body">
                              <div class="field">
                                <p class="control">
-                                 <input class="input  is-small" type="number" id="knifeSizeLength">
+                                 <input class="input  is-small" type="number" name="knifeSizeLength">
                                </p>
                              </div>
                            </div>
@@ -120,7 +122,7 @@
                            <div class="field-body">
                              <div class="field">
                                <p class="control">
-                                 <input class="input  is-small" type="number" id="knifeSizeWidth">
+                                 <input class="input  is-small" type="number" name="knifeSizeWidth">
                                </p>
                              </div>
                            </div>
@@ -130,7 +132,7 @@
                    <div class="field">
                        <label class="label">Год</label>
                        <div class="select is-small">
-                            <select id="year" value=<?php echo date('Y')?>>
+                            <select name="year" value=<?php echo date('Y')?>>
                                 <?php for ($i=date('Y'); $i>2012; $i--) {?>
                                     <option><?php echo $i; ?></option>
                                 <?php }; ?>
@@ -140,20 +142,20 @@
 
                    <div class="field" >
                        <label class="label">Номер заказа</label>
-                       <input type="text" class="input is-small" id="ordernum">
+                       <input type="text" class="input is-small" name="ordernum">
                    </div>
 
                    <div class="field" id="pic">
                        <label class="label">Картинка</label>
-                        <input type="file" class="input is-small" id='pic-1'>
+                        <input type="file" class="input is-small" name='pic-1'>
                        <div class="field-add is-size-7 has-text-info">Добавить</div>
                    </div>
 
                    <div class="field" >
-                    <div class="button is-primary" id="submit">Сохранить</div>
+                    <button class="button is-primary" id="submit" type="submit">Сохранить</button>
                    </div>
                    <div class="field" >
-                    <div class="button is-primary" id="cancel">Очистить</div>
+                    <button class="button is-primary" id="cancel" type="reset">Очистить</button>
                    </div>
                 </div>
             </div>

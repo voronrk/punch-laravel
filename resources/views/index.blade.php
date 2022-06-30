@@ -15,7 +15,7 @@
       <nav class="navbar has-background-light">
         <div class="navbar-start">
           <div class="navbar-item">
-            <button class="button is-primary has-text-weight-bold <?php //echo ($_SESSION['auth'] ? '' : 'is-hidden');?>">Создать</button>
+            <a href= {{ route('create') }} class="button is-primary has-text-weight-bold <?php //echo ($_SESSION['auth'] ? '' : 'is-hidden');?>">Создать</a>
           </div>
         </div>
         <div class="navbar-end">

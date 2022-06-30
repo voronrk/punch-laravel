@@ -2,6 +2,8 @@
 
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\FilterController;
+use App\Http\Controllers\PunchController;
+use Illuminate\Http\Request;
 
 /*
 |--------------------------------------------------------------------------
@@ -20,4 +22,6 @@ use App\Http\Controllers\FilterController;
 
 Route::get('/', FilterController::class);
 
-Route::get('admin', FilterController::class);
+Route::get('create', FilterController::class)->name('create');
+
+Route::post('add_punch', [PunchController::class, 'store']);

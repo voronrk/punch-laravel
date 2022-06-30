@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Storage;
 
 class PunchController extends Controller
 {
@@ -34,7 +35,12 @@ class PunchController extends Controller
      */
     public function store(Request $request)
     {
-        //
+
+        $file = $request->file('pic-1');
+        $upload_folder = 'public/img';
+        $path = Storage::putFile($upload_folder, $file);
+
+        return view('test', ['request' => $request, 'pic1' => $path]);
     }
 
     /**
