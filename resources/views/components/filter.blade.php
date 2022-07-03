@@ -1,16 +1,11 @@
 <div class="column is-2 filter">
     <form class="form" id="filter">
-
-        @include('filters.products', ['value' => $products, 'title'=> 'Виды продукции', 'id' => 'products'])
-        @include('filters.products', ['value' => $materials, 'title'=> 'Виды материалов', 'id' => 'materials'])
-        @include('filters.products', ['value' => $machines, 'title'=> 'Оборудование', 'id' => 'machines'])
         
-        {{-- <div class="field" id="products">
+        <div class="field" id="products">
             <label class="label">Виды продукции</label>
             <div class="field-wrapper-small">
             <?php
-                $products = db_query("SELECT * FROM `products`; ");
-                while($product = $products->fetch()) {?>
+                foreach($products as $product) {?>
                     <label class="checkbox"><input type="checkbox" id="<?php echo $product['value']?>"><?php echo $product['value']?></label>
                 <?php }; ?>
             </div>
@@ -21,8 +16,7 @@
             <label class="label">Виды материалов</label>
             <div class="field-wrapper-small">
             <?php
-                $materials = db_query("SELECT * FROM `materials`; ");
-                while($material = $materials->fetch()) {?>
+                foreach($materials as $material) {?>
                     <label class="checkbox"><input type="checkbox" id="<?php echo $material['value']?>"><?php echo $material['value']?></label>
                 <?php }; ?>
             </div>
@@ -33,8 +27,7 @@
             <label class="label">Оборудование</label>
             <div class="field-wrapper">
             <?php
-                $machines = db_query("SELECT * FROM `machines`; ");
-                while($machine = $machines->fetch()) {?>
+                foreach($machines as $machine) {?>
                     <label class="checkbox"><input type="checkbox" id="<?php echo $machine['value']?>"><?php echo $machine['value']?></label>
             <?php }; ?>
             </div>
@@ -122,7 +115,7 @@
         <div class="field" >
             <label class="label">Номер заказа</label>
             <input type="text" class="input is-small" id="orderNum">
-        </div> --}}
+        </div>
 
     </form>
 </div>
