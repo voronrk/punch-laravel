@@ -16,11 +16,9 @@ use Illuminate\Http\Request;
 |
 */
 
-// Route::get('/', function () {
-//     return view('index');
-// });
-
-Route::get('/', FilterController::class);
+Route::get('/', function () {
+    return view('index');
+});
 
 Route::get('create', FilterController::class)->name('create');
 

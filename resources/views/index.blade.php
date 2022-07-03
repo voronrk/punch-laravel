@@ -7,7 +7,7 @@
     <link rel="stylesheet" href="/resources/css/bulma.min.css">
     <link rel="stylesheet" href="/resources/css/style.css">
 
-    <script type="module" src="/resources/js/script.js" defer></script>
+    {{-- <script type="module" src="/resources/js/script.js" defer></script> --}}
     <title>Каталог штанц-форм</title>
 </head>
 <body>
@@ -46,12 +46,14 @@
     <section class="section">
         <div class="columns">
             <x-filter/>
-            <div class="column filter" id="cards-wrapper"></div>
+            <div class="column filter" id="cards-wrapper">
+              <x-punch-card/>
+            </div>
         </div>
     </div>
     </section>
 
-    <div class="modal" id="modal">
+    {{-- <div class="modal" id="modal">
         <div class="modal-background"></div>
         <div class="modal-content">
             <div class="card">
@@ -63,6 +65,6 @@
             </div>
         </div>
         <button class="modal-close is-large" aria-label="close" id="modal-close"></button>
-    </div>
+    </div> --}}
 </body>
 </html>
