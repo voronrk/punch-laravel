@@ -16,11 +16,11 @@ return new class extends Migration
         Schema::create('punch_products', function (Blueprint $table) {
             $table->id();
             $table->timestamps();
-            $table->unsignedBigInteger('punch');
-            $table->unsignedBigInteger('value');
+            $table->unsignedBigInteger('punche_id');
+            $table->unsignedBigInteger('product_id');
 
-            $table->foreign('punch')->references('id')->on('punches');
-            $table->foreign('value')->references('id')->on('products');
+            $table->foreign('punche_id')->references('id')->on('punches');
+            $table->foreign('product_id')->references('id')->on('products');
         });
     }
 

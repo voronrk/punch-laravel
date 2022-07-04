@@ -40,11 +40,6 @@ class PunchController extends Controller
     {
 
         $validatedRequest = $request->validated();
-        // echo "<pre>";
-        // echo print_r($validatedRequest,true);
-        // echo "</pre>";
-        // die();
-
         $file = $request->file('pic-1');
         $upload_folder = 'public/img';
         $path = Storage::putFile($upload_folder, $file);
@@ -61,9 +56,14 @@ class PunchController extends Controller
         $punchId = $punch->save();
 
         $punchPic = new PunchPic;
-        $punchPic->punch = $punchId;
-        $punchPic->value = $path;
-        $punchPic->save();
+        $punchPic->punch()->create([
+            'value' => $path
+        ]);
+
+        // $punchPic = new PunchPic;
+        // $punchPic->punche_id = $punch->id;
+        // $punchPic->value = $path;
+        // $punchPic->save();
 
         return view('test', ['request' => $request, 'pic1' => $path]);
     }
