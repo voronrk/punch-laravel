@@ -18,7 +18,7 @@ use Illuminate\Http\Request;
 
 Route::get('/', function () {
     return view('index');
-});
+})->name('index');
 
 Route::get('create', FilterController::class)->name('create');
 

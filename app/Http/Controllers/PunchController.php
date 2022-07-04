@@ -55,15 +55,15 @@ class PunchController extends Controller
         $punch->knife_size_width = $request->input('knifeSizeWidth');
         $punchId = $punch->save();
 
-        $punchPic = new PunchPic;
-        $punchPic->punch()->create([
-            'value' => $path
-        ]);
-
         // $punchPic = new PunchPic;
-        // $punchPic->punche_id = $punch->id;
-        // $punchPic->value = $path;
-        // $punchPic->save();
+        // $punchPic->punch()->create([
+        //     'value' => $path
+        // ]);
+
+        $punchPic = new PunchPic;
+        $punchPic->punch_id = $punch->id;
+        $punchPic->value = $path;
+        $punchPic->save();
 
         return view('test', ['request' => $request, 'pic1' => $path]);
     }

@@ -8,8 +8,12 @@ use Illuminate\Database\Eloquent\Model;
 class Punch extends Model
 {
 
-    private $value = ['value'];
-
     use HasFactory;
+
+    function pic()
+    {
+        // return $this->hasMany(PunchPic::class);
+        return $this->hasOne(PunchPic::class);
+    }
 
 }
