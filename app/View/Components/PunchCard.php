@@ -3,6 +3,7 @@
 namespace App\View\Components;
 
 use Illuminate\View\Component;
+use Illuminate\Support\Collection;
 use App\Models\Punch;
 
 class PunchCard extends Component
@@ -19,7 +20,7 @@ class PunchCard extends Component
     public $sizeHeight;
     public $knifeSizeLength;
     public $knifeSizeWidth;
-    public $pic;
+    public $pics;
     /**
      * Create a new component instance.
      *
@@ -27,7 +28,7 @@ class PunchCard extends Component
      */
     public function __construct()
     {
-        $punch = Punch::find(9);
+        $punch = Punch::find(10);
         $this->name = $punch->name;
         $this->orderNum = $punch->ordernum;
         $this->year = $punch->year;
@@ -39,7 +40,7 @@ class PunchCard extends Component
         $this->sizeHeight = $punch->size_height;
         $this->knifeSizeLength = $punch->knife_size_length;
         $this->knifeSizeWidth = $punch->knife_size_width;
-        $this->pic = $punch->pic->value;
+        $this->pics = $punch->pics;
     }
 
     /**

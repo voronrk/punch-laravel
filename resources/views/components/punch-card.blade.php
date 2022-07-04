@@ -1,7 +1,7 @@
 <div class="media box">
     <figure class="media-left">
         <div class="image is-128x128">
-            <img class="card-image" src="{{ $pic }}">
+            <img class="card-image" src="{{ $pics[0]['value'] }}">
         </div>
     </figure>
     <div class="media-content">

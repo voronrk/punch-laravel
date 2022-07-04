@@ -4,16 +4,15 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Support\Collection;
 
 class Punch extends Model
 {
-
     use HasFactory;
 
-    function pic()
+    function pics()
     {
-        // return $this->hasMany(PunchPic::class);
-        return $this->hasOne(PunchPic::class);
+        return $this->hasMany(PunchPic::class);
     }
 
 }

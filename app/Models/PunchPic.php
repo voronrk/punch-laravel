@@ -9,7 +9,7 @@ class PunchPic extends Model
 {
     use HasFactory;
 
-    private $value;
+    protected $fillable = ['value'];
 
     function punch()
     {
