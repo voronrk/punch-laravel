@@ -10,6 +10,7 @@ class PunchCard extends Component
     public $name;
     public $orderNum;
     public $year;
+    public $products;
     public $materials;
     public $machines;
     public $sizeLength;
@@ -27,8 +28,9 @@ class PunchCard extends Component
         $this->name = 'aaa';
         $this->orderNum = '1234';
         $this->year = 2020;
-        $this->materials = 'Картон';
-        $this->machines = 'ПТ';
+        $this->products = ['Коробки', 'Бирки', 'Обечайки'];
+        $this->materials = ['Картон', 'Бумага'];
+        $this->machines = ['ПТ', 'STS'];
         $this->sizeLength = 11;
         $this->sizeWidth = 22;
         $this->sizeHeight = 33;
