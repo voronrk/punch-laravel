@@ -21,6 +21,7 @@ class PunchCard extends Component
     public $knifeSizeLength;
     public $knifeSizeWidth;
     public $pics;
+
     /**
      * Create a new component instance.
      *
@@ -28,13 +29,13 @@ class PunchCard extends Component
      */
     public function __construct()
     {
-        $punch = Punch::find(10);
+        $punch = Punch::find(19);
         $this->name = $punch->name;
         $this->orderNum = $punch->ordernum;
         $this->year = $punch->year;
-        $this->products = ['Коробки', 'Бирки', 'Обечайки'];
-        $this->materials = ['Картон', 'Бумага'];
-        $this->machines = ['ПТ', 'STS'];
+        $this->products = $punch->products;
+        $this->materials = $punch->materials;
+        $this->machines = $punch->machines;
         $this->sizeLength = $punch->size_length;
         $this->sizeWidth = $punch->size_width;
         $this->sizeHeight = $punch->size_height;

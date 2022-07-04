@@ -7,12 +7,12 @@
     <div class="media-content">
         <div class="content">
             <div class="has-text-weight-bold is-size-5">{{$name}}</div>
-            <div>{{implode(', ', $products)}}</div>
+            <div>{{ $products }}</div>
             <div class="columns">
                 <div class="column">
                     <span class="has-text-weight-bold">Заказ № {{$orderNum}}/{{$year}}</span>
-                    <br> Материал: {{implode(', ', $materials)}}
-                    <br> Машина: {{implode(', ', $machines)}}
+                    <br> Материал: {{ $materials }}
+                    <br> Машина: {{ $machines }}
                 </div>
                 <div class="column">
                     <span class="has-text-weight-bold">Размеры изделия</span>

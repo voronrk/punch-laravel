@@ -7,6 +7,9 @@ use App\Http\Requests\StorePunchRequest;
 use Illuminate\Support\Facades\Storage;
 use App\Models\Punch;
 use App\Models\PunchPic;
+use App\Models\PunchProduct;
+use App\Models\PunchMaterial;
+use App\Models\PunchMachine;
 
 class PunchController extends Controller
 {
@@ -39,21 +42,53 @@ class PunchController extends Controller
     public function store(StorePunchRequest $request)
     {
 
+        // echo "<pre>";
+        // echo print_r($request->collect(),true);
+        // echo "</pre>";
+        // die();
+
         $validatedRequest = $request->validated();
+
+        $products = $request->products;
+        $materials = $request->materials;
+        $machines = $request->machines;
+
         $file = $request->file('pic-1');
         $upload_folder = 'public/img';
         $path = Storage::putFile($upload_folder, $file);
 
-        $punch = new Punch;
-        $punch->name = $validatedRequest['title'];
-        $punch->ordernum = $request->input('ordernum');
-        $punch->year = $request->input('year');
-        $punch->size_length = $validatedRequest['sizeLength'];
-        $punch->size_width = $validatedRequest['sizeWidth'];
-        $punch->size_height = $request->input('sizeHeight');
-        $punch->knife_size_length = $request->input('knifeSizeLength');
-        $punch->knife_size_width = $request->input('knifeSizeWidth');
-        $punchId = $punch->save();
+        // $punch = new Punch;
+        $punch = Punch::create([
+            'name' => $validatedRequest['title'],
+            'ordernum' => $request->input('ordernum'),
+            'year' => $request->input('year'),
+            'size_length' => $validatedRequest['sizeLength'],
+            'size_width' => $validatedRequest['sizeWidth'],
+            'size_height' => $request->input('sizeHeight'),
+            'knife_size_length' => $request->input('knifeSizeLength'),
+            'knife_size_width' => $request->input('knifeSizeWidth'),
+        ]);
+
+        foreach($request->products as $product) {
+            $punchProducts = new PunchProduct;
+            $punch->products()->create([
+                'product_id' => $product
+            ]);
+        };
+
+        foreach($request->materials as $material) {
+            $punchProducts = new PunchMaterial;
+            $punch->materials()->create([
+                'material_id' => $material
+            ]);
+        };
+
+        foreach($request->machines as $machine) {
+            $punchProducts = new PunchMachine;
+            $punch->machines()->create([
+                'machine_id' => $machine
+            ]);
+        };
 
         $punchPic = new PunchPic;
         $punch->pics()->create([

@@ -39,7 +39,7 @@
                     <div class="field-wrapper-full">
                         <?php
                             foreach($products as $product) {?>
-                                <label class="checkbox"><input type="checkbox" name="<?php echo 'products-'. $product['id']?>"><?php echo $product['value']?></label>
+                                <label class="checkbox"><input type="checkbox" name="<?php echo 'products[]';?>" value="<?php echo $product['id']?>"><?php echo $product['value']?></label>
                             <?php }; ?>
                     </div>
                 </div>
@@ -49,7 +49,7 @@
                        <div class="field-wrapper-full">
                        <?php
                             foreach($materials as $material) {?>
-                                <label class="checkbox"><input type="checkbox" name="<?php echo 'materials-'.$material['id']?>"><?php echo $material['value']?></label>
+                                <label class="checkbox"><input type="checkbox" name="<?php echo 'materials[]';?>" value="<?php echo $material['id']?>"><?php echo $material['value']?></label>
                             <?php }; ?>
                        </div>
                    </div>
@@ -59,7 +59,7 @@
                        <div class="field-wrapper-full">
                        <?php
                             foreach($machines as $machine) {?>
-                                <label class="checkbox"><input type="checkbox" name="<?php echo 'machines-'.$machine['id']?>"><?php echo $machine['value']?></label>
+                                <label class="checkbox"><input type="checkbox" name="<?php echo 'machines[]';?>" value="<?php echo $machine['id']?>"><?php echo $machine['value']?></label>
                         <?php }; ?>
                        </div>
                    </div>
