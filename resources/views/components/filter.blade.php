@@ -119,3 +119,4 @@
 
     </form>
 </div>
+<script src="/resources/js/filter.js"></script>

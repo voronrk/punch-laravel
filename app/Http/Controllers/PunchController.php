@@ -54,11 +54,11 @@ class PunchController extends Controller
             'name' => $validatedRequest['title'],
             'ordernum' => $request->input('ordernum'),
             'year' => $request->input('year'),
-            'size_length' => $validatedRequest['sizeLength'],
-            'size_width' => $validatedRequest['sizeWidth'],
-            'size_height' => $request->input('sizeHeight'),
-            'knife_size_length' => $request->input('knifeSizeLength'),
-            'knife_size_width' => $request->input('knifeSizeWidth'),
+            'size_length' => $validatedRequest['size-length'],
+            'size_width' => $validatedRequest['size-width'],
+            'size_height' => $request->input('size-height'),
+            'knife_size_length' => $request->input('knife-size-length'),
+            'knife_size_width' => $request->input('knife-size-width'),
         ]);
 
         foreach($request->products as $product) {

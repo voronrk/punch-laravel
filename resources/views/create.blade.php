@@ -25,6 +25,10 @@
         </nav>
 
         <section class="section">
+        <pre>
+        <?php echo print_r(old(),true);?>
+        </pre>
+
         <form class="form" enctype="multipart/form-data" id="addPunch" method="POST" action="/add_punch">
             @csrf
             <div class="field" >
@@ -35,6 +39,9 @@
                 <div class="column is-3">
                 <div class="field" id="products">
                     <label class="label">Виды продукции</label>
+                    @if ($errors->first('products'))
+                      <p class="help is-danger">Выберите вид продукции</p>
+                    @endif
                     <div class="field-wrapper-full">
                         <?php
                             foreach($products as $product) {?>
@@ -45,6 +52,9 @@
                    
                    <div class="field" id="materials">
                        <label class="label">Виды материалов</label>
+                        @if ($errors->first('products'))
+                          <p class="help is-danger">Выберите материал</p>
+                        @endif
                        <div class="field-wrapper-full">
                        <?php
                             foreach($materials as $material) {?>
@@ -55,6 +65,9 @@
 
                    <div class="field" id="machines">
                        <label class="label">Оборудование</label>
+                        @if ($errors->first('products'))
+                          <p class="help is-danger">Укажите оборудование</p>
+                        @endif
                        <div class="field-wrapper-full">
                        <?php
                             foreach($machines as $machine) {?>
@@ -73,7 +86,7 @@
                            <div class="field-body">
                              <div class="field">
                                <p class="control">
-                                 <input class="input  is-small" type="number" name="sizeLength">
+                                 <input class="input  is-small" type="number" name="size-length" value={{ old('size-length') }}>
                                </p>
                              </div>
                            </div>
@@ -85,7 +98,7 @@
                            <div class="field-body">
                              <div class="field">
                                <p class="control">
-                                 <input class="input  is-small" type="number" name="sizeWidth">
+                                 <input class="input  is-small" type="number" name="size-width" value={{ old('size-width') }}>
                                </p>
                              </div>
                            </div>
@@ -97,7 +110,7 @@
                            <div class="field-body">
                              <div class="field">
                                <p class="control">
-                                 <input class="input  is-small" type="number" name="sizeHeight">
+                                 <input class="input  is-small" type="number" name="size-height" value={{ old('size-height') }}>
                                </p>
                              </div>
                            </div>
@@ -113,7 +126,7 @@
                            <div class="field-body">
                              <div class="field">
                                <p class="control">
-                                 <input class="input  is-small" type="number" name="knifeSizeLength">
+                                 <input class="input  is-small" type="number" name="knife-size-length" value={{ old('knife-size-length') }}>
                                </p>
                              </div>
                            </div>
@@ -125,7 +138,7 @@
                            <div class="field-body">
                              <div class="field">
                                <p class="control">
-                                 <input class="input  is-small" type="number" name="knifeSizeWidth">
+                                 <input class="input  is-small" type="number" name="knife-size-width" value={{ old('knife-size-width') }}>
                                </p>
                              </div>
                            </div>
@@ -135,9 +148,19 @@
                    <div class="field">
                        <label class="label">Год</label>
                        <div class="select is-small">
-                            <select name="year" value=<?php echo date('Y')?>>
+                            <select name="year" 
+                                @if (old('year'))
+                                  value = {{ old('year') }}
+                                @else 
+                                  value=<?php echo date('Y');?>
+                                @endif
+                                >
                                 <?php for ($i=date('Y'); $i>2012; $i--) {?>
-                                    <option><?php echo $i; ?></option>
+                                    <option
+                                    @if (old('year') == $i)
+                                      selected
+                                    @endif
+                                    ><?php echo $i; ?></option>
                                 <?php }; ?>
                             </select>
                         </div>
@@ -145,7 +168,7 @@
 
                    <div class="field" >
                        <label class="label">Номер заказа</label>
-                       <input type="text" class="input is-small" name="ordernum">
+                       <input type="text" class="input is-small" name="ordernum" value={{ old('ordernum') }}>
                    </div>
 
                    <div class="field" id="pic">

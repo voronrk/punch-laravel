@@ -25,8 +25,14 @@ class StorePunchRequest extends FormRequest
     {
         return [
             'title' => 'required',
-            'sizeLength' => 'required',
-            'sizeWidth' => 'required',
+            'size-length' => 'numeric|required',
+            'size-width' => 'numeric|required',
+            'size-height' => 'numeric',
+            'knife-size-length' => 'numeric|required',
+            'knife-size-width' => 'numeric|required',
+            'products' => 'required',
+            'machines' => 'required',
+            'materials' => 'required',
         ];
     }
 }
