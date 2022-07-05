@@ -92,7 +92,7 @@ class PunchController extends Controller
             ]);
         };        
 
-        return view('index');
+        return redirect('/');
     }
 
     /**
