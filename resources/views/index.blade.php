@@ -46,9 +46,10 @@
     <section class="section">
         <div class="columns">
             <x-filter/>
-            <div class="column filter" id="cards-wrapper">
+            {{-- <div class="column filter" id="cards-wrapper">
               <x-punch-card/>
-            </div>
+            </div> --}}
+            <x-cards-wrapper/>
         </div>
     </div>
     </section>
