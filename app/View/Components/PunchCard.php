@@ -29,11 +29,6 @@ class PunchCard extends Component
      */
     public function __construct(Punch $punch)
     {
-        // echo "<pre>";
-        // echo print_r($punch,true);
-        // echo "</pre>";
-        // die();
-        // $punch = Punch::find(1);
         $this->name = $punch->name;
         $this->orderNum = $punch->ordernum;
         $this->year = $punch->year;
