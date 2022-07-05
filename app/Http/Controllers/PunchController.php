@@ -43,21 +43,13 @@ class PunchController extends Controller
     {
 
         // echo "<pre>";
-        // echo print_r($request->collect(),true);
+        // // echo print_r($request->collect(),true);
+        // echo print_r($request->all(),true);
         // echo "</pre>";
         // die();
 
         $validatedRequest = $request->validated();
 
-        $products = $request->products;
-        $materials = $request->materials;
-        $machines = $request->machines;
-
-        $file = $request->file('pic-1');
-        $upload_folder = 'public/img';
-        $path = Storage::putFile($upload_folder, $file);
-
-        // $punch = new Punch;
         $punch = Punch::create([
             'name' => $validatedRequest['title'],
             'ordernum' => $request->input('ordernum'),
@@ -90,10 +82,15 @@ class PunchController extends Controller
             ]);
         };
 
-        $punchPic = new PunchPic;
-        $punch->pics()->create([
-            'value' => $path
-        ]);
+        foreach($request->pics as $pic) {
+            $file = $pic;
+            $upload_folder = 'public/img';
+            $path = Storage::putFile($upload_folder, $file);
+            $punchPic = new PunchPic;
+            $punch->pics()->create([
+                'value' => $path
+            ]);
+        };        
 
         return view('test', ['request' => $request, 'pic1' => $path]);
     }

@@ -25,7 +25,6 @@
         </nav>
 
         <section class="section">
-        {{-- <form class="form" id="addPunch" method="POST" action="/add_punch"> --}}
         <form class="form" enctype="multipart/form-data" id="addPunch" method="POST" action="/add_punch">
             @csrf
             <div class="field" >
@@ -151,7 +150,7 @@
 
                    <div class="field" id="pic">
                        <label class="label">Картинка</label>
-                        <input type="file" class="input is-small" name='pic-1'>
+                        <input type="file" class="input is-small" name='pics[]'>
                        <div class="field-add is-size-7 has-text-info">Добавить</div>
                    </div>
 

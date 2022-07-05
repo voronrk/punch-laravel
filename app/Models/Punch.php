@@ -28,17 +28,17 @@ class Punch extends Model
 
     function products()
     {
-        return $this->hasMany(PunchProduct::class)->hasOne(Product::class);
+        return $this->hasMany(PunchProduct::class);
     }
     
     function materials()
     {
-        return $this->hasMany(PunchMaterial::class)->hasOne(Material::class);
+        return $this->hasMany(PunchMaterial::class);
     }
     
     function machines()
     {
-        return $this->hasMany(PunchMachine::class)->hasOne(Machine::class);
+        return $this->hasMany(PunchMachine::class);
     }
 
 }
