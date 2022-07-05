@@ -23,12 +23,16 @@ class PunchCard extends Component
     public $pics;
 
     /**
-     * Create a new component instance.
+     * Undocumented function
      *
-     * @return void
+     * @param Punch $punch
      */
     public function __construct(Punch $punch)
     {
+        // echo "<pre>";
+        // echo print_r($punch,true);
+        // echo "</pre>";
+        // die();
         // $punch = Punch::find(1);
         $this->name = $punch->name;
         $this->orderNum = $punch->ordernum;

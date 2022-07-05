@@ -92,7 +92,7 @@ class PunchController extends Controller
             ]);
         };        
 
-        return view('test', ['request' => $request, 'pic1' => $path]);
+        return view('index');
     }
 
     /**

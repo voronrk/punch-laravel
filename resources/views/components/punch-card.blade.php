@@ -34,4 +34,3 @@
         <button class="button is-small">Редактировать</button>
     </div>
 </div>
-<script src="resources/js/carousel.js"></script>
