@@ -33,9 +33,9 @@ class PunchCard extends Component
         $this->name = $punch->name;
         $this->orderNum = $punch->ordernum;
         $this->year = $punch->year;
-        $this->products = $punch->products;
-        $this->materials = $punch->materials;
-        $this->machines = $punch->machines;
+        $this->products = $punch->products->implode('value', ', ');
+        $this->materials = $punch->materials->implode('value', ', ');
+        $this->machines = $punch->machines->implode('value', ', ');
         $this->sizeLength = $punch->size_length;
         $this->sizeWidth = $punch->size_width;
         $this->sizeHeight = $punch->size_height;
