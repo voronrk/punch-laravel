@@ -29,7 +29,7 @@ class PunchCard extends Component
      */
     public function __construct()
     {
-        $punch = Punch::find(5);
+        $punch = Punch::find(1);
         $this->name = $punch->name;
         $this->orderNum = $punch->ordernum;
         $this->year = $punch->year;

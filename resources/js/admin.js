@@ -13,8 +13,6 @@ fieldAdd.forEach(element => {
     element.addEventListener('click', () => {
         let newInput = element.parentNode.children[1].cloneNode();
         element.parentNode.insertBefore(newInput,element);
-        console.log(newInput.name);
-        // newInput.name = newInput.previousElementSibling.name.split('-')[0] + '-' + ++newInput.previousElementSibling.name.split('-')[1];
         newInput.value = '';
     });
 });

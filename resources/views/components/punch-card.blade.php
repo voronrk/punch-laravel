@@ -1,7 +1,9 @@
 <div class="media box">
     <figure class="media-left">
-        <div class="image is-128x128">
-            <img class="card-image" src="{{ $pics[1]['value'] }}">
+        <div class="image is-128x128" id="pic">
+            @foreach($pics as $key=>$pic)
+                <img class="card-image @if($key>0) {{'is-hidden'}} @endif" src="{{ $pic['value'] }}">
+            @endforeach
         </div>
     </figure>
     <div class="media-content">
@@ -32,3 +34,4 @@
         <button class="button is-small">Редактировать</button>
     </div>
 </div>
+<script src="resources/js/carousel.js"></script>
