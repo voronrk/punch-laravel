@@ -1,3 +1,5 @@
 <div class="column filter" id="cards-wrapper">
-    <x-punch-card/>
+    @foreach($punches as $punch)
+        <x-punch-card/>
+    @endforeach
 </div>

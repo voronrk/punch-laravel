@@ -41,4 +41,19 @@ class Punch extends Model
         return $this->belongsToMany(Machine::class, 'punch_machines');
     }
 
+    function productsCreate()
+    {
+        return $this->hasMany(PunchProduct::class);
+    }
+    
+    function materialsCreate()
+    {
+        return $this->hasMany(PunchMaterial::class);
+    }
+    
+    function machinesCreate()
+    {
+        return $this->hasMany(PunchMachine::class);
+    }
+
 }

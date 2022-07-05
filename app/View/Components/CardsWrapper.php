@@ -3,9 +3,13 @@
 namespace App\View\Components;
 
 use Illuminate\View\Component;
+use App\Models\Punch;
 
 class CardsWrapper extends Component
 {
+
+    public $punches;
+
     /**
      * Create a new component instance.
      *
@@ -13,7 +17,7 @@ class CardsWrapper extends Component
      */
     public function __construct()
     {
-        //
+        $this->punches = Punch::all();
     }
 
     /**
@@ -23,6 +27,6 @@ class CardsWrapper extends Component
      */
     public function render()
     {
-        return view('components.cards-wrapper');
+        return view('components.cards-wrapper', ['punches' => $this->punches]);
     }
 }

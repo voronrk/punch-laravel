@@ -63,21 +63,21 @@ class PunchController extends Controller
 
         foreach($request->products as $product) {
             $punchProducts = new PunchProduct;
-            $punch->products()->create([
+            $punch->productsCreate()->create([
                 'product_id' => $product
             ]);
         };
 
         foreach($request->materials as $material) {
             $punchProducts = new PunchMaterial;
-            $punch->materials()->create([
+            $punch->materialsCreate()->create([
                 'material_id' => $material
             ]);
         };
 
         foreach($request->machines as $machine) {
             $punchProducts = new PunchMachine;
-            $punch->machines()->create([
+            $punch->machinesCreate()->create([
                 'machine_id' => $machine
             ]);
         };
