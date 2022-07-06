@@ -25,14 +25,26 @@ class StorePunchRequest extends FormRequest
     {
         return [
             'title' => 'required',
-            'size-length' => 'numeric|required',
-            'size-width' => 'numeric|required',
-            'size-height' => 'numeric',
-            'knife-size-length' => 'numeric|required',
-            'knife-size-width' => 'numeric|required',
+            'size-length' => 'required|numeric',
+            'size-width' => 'required|numeric',
+            'size-height' => '',
+            'knife-size-length' => 'required|numeric',
+            'knife-size-width' => 'required|numeric',
             'products' => 'required',
             'machines' => 'required',
             'materials' => 'required',
+        ];
+    }
+
+    public function messages()
+    {
+        return [
+            'title.required' => 'Необходимо ввести название',
+            'products.required' => 'Выберите хотя бы один продукт',
+            'materials.required' => 'Выберите хотя бы один материал',
+            'machines.required' => 'Выберите машину',            
+            'required' => 'Заполните это поле',
+            'subject.numeric' => 'Поле должно содержать число',
         ];
     }
 }

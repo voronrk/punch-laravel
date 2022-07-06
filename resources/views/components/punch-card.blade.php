@@ -12,7 +12,7 @@
             <div>{{ $products }}</div>
             <div class="columns">
                 <div class="column">
-                    <span class="has-text-weight-bold">Заказ № {{$orderNum}}/{{$year}}</span>
+                    <span class="has-text-weight-bold">Заказ № {{$orderNum}}<?php if ($year) echo "/{$year}";?></span>
                     <br> Материал: {{ $materials }}
                     <br> Машина: {{ $machines }}
                 </div>
@@ -20,7 +20,9 @@
                     <span class="has-text-weight-bold">Размеры изделия</span>
                     <br>Длина, мм: {{$sizeLength}}
                     <br>Ширина, мм: {{$sizeWidth}}
-                    <br>Высота, мм: {{$sizeHeight}}
+                    @if ($sizeHeight)
+                        <br>Высота, мм: {{$sizeHeight}}
+                    @endif
                 </div>
                 <div class="column">
                     <span class="has-text-weight-bold">Размер по ножам</span>

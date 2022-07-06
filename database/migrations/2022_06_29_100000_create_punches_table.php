@@ -17,11 +17,11 @@ return new class extends Migration
             $table->id();
             $table->timestamps();
             $table->string('name');
-            $table->string('ordernum');
-            $table->string('year');
+            $table->string('ordernum')->nullable();
+            $table->string('year')->nullable();
             $table->float('size_length', 6, 2)->unsigned();
             $table->float('size_width', 6, 2)->unsigned();
-            $table->float('size_height', 6, 2)->unsigned();
+            $table->float('size_height', 6, 2)->unsigned()->nullable();
             $table->float('knife_size_length', 6, 2)->unsigned();
             $table->float('knife_size_width', 6, 2)->unsigned();
         });
