@@ -17,7 +17,7 @@ class CardsWrapper extends Component
      */
     public function __construct()
     {
-        $this->punches = Punch::all();
+        $this->punches = Punch::with('products', 'machines', 'materials', 'pics')->get();
     }
 
     /**
