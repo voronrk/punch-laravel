@@ -18,9 +18,14 @@ class PunchController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
+    public function index(Request $request)
     {
-        //
+        $filter = $request->filter;
+        if ($filter) {
+            return [$filter, Punch::with(['pics','products','materials','machines'])->where($filter)->get()];
+        } else {
+            return [$filter, Punch::with(['pics','products','materials','machines'])->get()];
+        }        
     }
 
     /**
@@ -101,9 +106,9 @@ class PunchController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function show($id)
+    public function show(Request $request)
     {
-        //
+        return Punch::with(['pics','products','materials','machines'])->where('id', $request->id)->get();
     }
 
     /**

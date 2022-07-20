@@ -3,6 +3,8 @@
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 
+use App\Http\Controllers\PunchController;
+
 /*
 |--------------------------------------------------------------------------
 | API Routes
@@ -17,3 +19,9 @@ use Illuminate\Support\Facades\Route;
 Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
     return $request->user();
 });
+
+Route::get('/punch.list', [PunchController::class, 'index']);
+Route::get('/punch.get', [PunchController::class, 'show']);
+Route::get('/punch.update', [PunchController::class, 'update']);
+Route::get('/punch.add', [PunchController::class, 'store']);
+
