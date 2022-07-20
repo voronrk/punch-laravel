@@ -28,32 +28,16 @@ class Punch extends Model
 
     function products()
     {
-        return $this->belongsToMany(Product::class, 'punch_products');
+        return $this->belongsToMany(Product::class);
     }
     
     function materials()
     {
-        return $this->belongsToMany(Material::class, 'punch_materials');
+        return $this->belongsToMany(Material::class);
     }
     
     function machines()
     {
-        return $this->belongsToMany(Machine::class, 'punch_machines');
+        return $this->belongsToMany(Machine::class);
     }
-
-    function productsCreate()
-    {
-        return $this->hasMany(PunchProduct::class);
-    }
-    
-    function materialsCreate()
-    {
-        return $this->hasMany(PunchMaterial::class);
-    }
-    
-    function machinesCreate()
-    {
-        return $this->hasMany(PunchMachine::class);
-    }
-
 }

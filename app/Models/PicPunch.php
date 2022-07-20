@@ -9,13 +9,4 @@ class PunchPic extends Model
 {
     use HasFactory;
 
-    protected $fillable = [
-        'punch_id',
-        'value'
-    ];
-
-    function punch()
-    {
-        return $this->belongsTo(Punch::class);
-    }
 }

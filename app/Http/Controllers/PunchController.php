@@ -6,10 +6,10 @@ use Illuminate\Http\Request;
 use App\Http\Requests\StorePunchRequest;
 use Illuminate\Support\Facades\Storage;
 use App\Models\Punch;
-use App\Models\PunchPic;
-use App\Models\PunchProduct;
-use App\Models\PunchMaterial;
-use App\Models\PunchMachine;
+use App\Models\PicPunch;
+use App\Models\ProductPunch;
+use App\Models\MaterialPunch;
+use App\Models\MachinePunch;
 
 class PunchController extends Controller
 {
@@ -67,21 +67,21 @@ class PunchController extends Controller
         ]);
 
         foreach($request->products as $product) {
-            $punchProducts = new PunchProduct;
+            $punchProducts = new ProductPunch;
             $punch->productsCreate()->create([
                 'product_id' => $product
             ]);
         };
 
         foreach($request->materials as $material) {
-            $punchProducts = new PunchMaterial;
+            $punchProducts = new MaterialPunch;
             $punch->materialsCreate()->create([
                 'material_id' => $material
             ]);
         };
 
         foreach($request->machines as $machine) {
-            $punchProducts = new PunchMachine;
+            $punchProducts = new MachinePunch;
             $punch->machinesCreate()->create([
                 'machine_id' => $machine
             ]);
@@ -91,7 +91,7 @@ class PunchController extends Controller
             $file = $pic;
             $upload_folder = 'public/img';
             $path = Storage::putFile($upload_folder, $file);
-            $punchPic = new PunchPic;
+            $punchPic = new PicPunch;
             $punch->pics()->create([
                 'value' => $path
             ]);
