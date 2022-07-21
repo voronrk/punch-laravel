@@ -10,9 +10,6 @@ use App\Models\Pic;
 use App\Models\Product;
 use App\Models\Material;
 use App\Models\Machine;
-// use App\Models\ProductPunch;
-// use App\Models\MaterialPunch;
-// use App\Models\MachinePunch;
 
 class PunchController extends Controller
 {
@@ -78,32 +75,10 @@ class PunchController extends Controller
         $machines = Machine::find($request->machines);
         $punch->machines()->attach($machines);
 
-        // foreach($request->products as $product) {
-        //     $punchProducts = new ProductPunch;
-        //     $punch->products()->attach([
-        //         'product_id' => $product
-        //     ]);
-        // };
-
-        // foreach($request->materials as $material) {
-        //     $punchProducts = new MaterialPunch;
-        //     $punch->materialsCreate()->create([
-        //         'material_id' => $material
-        //     ]);
-        // };
-
-        // foreach($request->machines as $machine) {
-        //     $punchProducts = new MachinePunch;
-        //     $punch->machinesCreate()->create([
-        //         'machine_id' => $machine
-        //     ]);
-        // };
-
         foreach($request->pics as $pic) {
             $file = $pic;
             $upload_folder = 'public/img';
             $path = Storage::putFile($upload_folder, $file);
-            // $punchPic = new Pic;
             $punch->pics()->create([
                 'value' => $path
             ]);
@@ -152,8 +127,15 @@ class PunchController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy($id)
+    public function destroy(Request $request)
     {
-        //
+        $punch = Punch::findOrFail($request->id);
+        $punch->pics()->delete();
+        $punch->products()->delete();
+        $punch->materials()->delete();
+        $punch->machines()->delete();
+        $punch->delete();
+        // Punch::with(['pics','products','materials','machines'])->where('id', $request->id)->delete();
+        return redirect('/');
     }
 }

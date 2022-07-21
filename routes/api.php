@@ -24,4 +24,5 @@ Route::get('/punch.list', [PunchController::class, 'index']);
 Route::get('/punch.get', [PunchController::class, 'show']);
 Route::get('/punch.update', [PunchController::class, 'update']);
 Route::get('/punch.add', [PunchController::class, 'store']);
+Route::get('/punch.delete', [PunchController::class, 'destroy']);
 
