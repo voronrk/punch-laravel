@@ -20,7 +20,7 @@ return new class extends Migration
             $table->unsignedBigInteger('machine_id');
 
             $table->foreign('punch_id')->references('id')->on('punches')->onDelete('cascade');
-            $table->foreign('machine_id')->references('id')->on('machines')->onDelete('cascade');
+            $table->foreign('machine_id')->references('id')->on('machines');
         });
     }
 

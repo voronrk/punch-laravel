@@ -129,13 +129,7 @@ class PunchController extends Controller
      */
     public function destroy(Request $request)
     {
-        $punch = Punch::findOrFail($request->id);
-        $punch->pics()->delete();
-        $punch->products()->delete();
-        $punch->materials()->delete();
-        $punch->machines()->delete();
-        $punch->delete();
-        // Punch::with(['pics','products','materials','machines'])->where('id', $request->id)->delete();
+        Punch::with(['pics','products','materials','machines'])->where('id', $request->id)->delete();
         return redirect('/');
     }
 }
