@@ -23,7 +23,7 @@ class Punch extends Model
 
     function pics()
     {
-        return $this->hasMany(PunchPic::class);
+        return $this->hasMany(Pic::class);
     }
 
     function products()

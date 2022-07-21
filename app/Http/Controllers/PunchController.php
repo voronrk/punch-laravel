@@ -6,10 +6,13 @@ use Illuminate\Http\Request;
 use App\Http\Requests\StorePunchRequest;
 use Illuminate\Support\Facades\Storage;
 use App\Models\Punch;
-use App\Models\PicPunch;
-use App\Models\ProductPunch;
-use App\Models\MaterialPunch;
-use App\Models\MachinePunch;
+use App\Models\Pic;
+use App\Models\Product;
+use App\Models\Material;
+use App\Models\Machine;
+// use App\Models\ProductPunch;
+// use App\Models\MaterialPunch;
+// use App\Models\MachinePunch;
 
 class PunchController extends Controller
 {
@@ -48,8 +51,8 @@ class PunchController extends Controller
     {
 
         // echo "<pre>";
-        // // echo print_r($request->collect(),true);
-        // echo print_r($request->all(),true);
+        // echo print_r($request->collect(),true);
+        // // echo print_r($request->all(),true);
         // echo "</pre>";
         // die();
 
@@ -66,36 +69,45 @@ class PunchController extends Controller
             'knife_size_width' => $request->input('knife-size-width'),
         ]);
 
-        foreach($request->products as $product) {
-            $punchProducts = new ProductPunch;
-            $punch->productsCreate()->create([
-                'product_id' => $product
-            ]);
-        };
+        $products = Product::find($request->products);
+        $punch->products()->attach($products);
 
-        foreach($request->materials as $material) {
-            $punchProducts = new MaterialPunch;
-            $punch->materialsCreate()->create([
-                'material_id' => $material
-            ]);
-        };
+        $materials = Material::find($request->materials);
+        $punch->materials()->attach($materials);
 
-        foreach($request->machines as $machine) {
-            $punchProducts = new MachinePunch;
-            $punch->machinesCreate()->create([
-                'machine_id' => $machine
-            ]);
-        };
+        $machines = Machine::find($request->machines);
+        $punch->machines()->attach($machines);
+
+        // foreach($request->products as $product) {
+        //     $punchProducts = new ProductPunch;
+        //     $punch->products()->attach([
+        //         'product_id' => $product
+        //     ]);
+        // };
+
+        // foreach($request->materials as $material) {
+        //     $punchProducts = new MaterialPunch;
+        //     $punch->materialsCreate()->create([
+        //         'material_id' => $material
+        //     ]);
+        // };
+
+        // foreach($request->machines as $machine) {
+        //     $punchProducts = new MachinePunch;
+        //     $punch->machinesCreate()->create([
+        //         'machine_id' => $machine
+        //     ]);
+        // };
 
         foreach($request->pics as $pic) {
             $file = $pic;
             $upload_folder = 'public/img';
             $path = Storage::putFile($upload_folder, $file);
-            $punchPic = new PicPunch;
+            // $punchPic = new Pic;
             $punch->pics()->create([
                 'value' => $path
             ]);
-        };        
+        };
 
         return redirect('/');
     }

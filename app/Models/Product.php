@@ -9,7 +9,7 @@ class Product extends Model
 {
     use HasFactory;
 
-    function punch()
+    function punches()
     {
         return $this->belongsToMany(Punch::class);
     }

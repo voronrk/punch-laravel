@@ -5,12 +5,17 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
-class Machine extends Model
+class Pic extends Model
 {
     use HasFactory;
 
-    function punches()
+    protected $fillable = [
+        'value',
+    ];
+
+    function punch()
     {
         return $this->belongsToMany(Punch::class);
     }
+
 }
